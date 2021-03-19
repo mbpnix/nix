@@ -18,6 +18,18 @@
 #    ];
 #  };
 
+  # User Git
+  programs.git = {
+    enable = true;
+    ignores = [ "*~" "*.swp" ];
+    signing = {
+      key = "EEED5550";
+      signByDefault = true;
+    };
+    userEmail = "mbpnix@pm.me";
+    userName = "mbpnix";
+  };
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "master";
@@ -70,6 +82,9 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      window.title = "Alacritty";
+      window.dynamic_title = false;
+      window.startup_mode = "Maximized";
       window.dynamic_padding = false;
       window.padding = {
         x = 0;
@@ -110,7 +125,7 @@
           white = "0xfdf0ed";
         };
       };
-      background_opacity = 0.8;
+      background_opacity = 1.0;
       live_config_reload = true;
     };
   };
