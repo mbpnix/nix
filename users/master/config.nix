@@ -1,0 +1,2 @@
+# Alow unfree
+{ allowUnfree = true; }
