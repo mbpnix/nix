@@ -82,6 +82,7 @@
     initialPassword = "master";
     description = "Master";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "sddm" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -114,6 +115,8 @@
     xfontsel
     yakuake
     zip
+    zsh-powerlevel10k
+    zsh
   ] ++ (with pkgs.kdeApplications; [
     kate
   ]);
@@ -204,6 +207,24 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  # Nix Stuff
+  nix.autoOptimiseStore = true;
+
+  # Zsh
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  environment.pathsToLink = [ "/share/zsh" ];
+
+  # OhMyZsh
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    theme = "robbyrussell";
   };
 
   # List services that you want to enable:
