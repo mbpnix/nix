@@ -217,6 +217,7 @@
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
@@ -225,6 +226,7 @@
   programs.zsh.ohMyZsh = {
     enable = true;
     theme = "robbyrussell";
+    plugins = [ " git " ];
   };
 
   # List services that you want to enable:
