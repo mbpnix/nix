@@ -26,7 +26,7 @@
       key = "EEED5550";
       signByDefault = true;
     };
-    userEmail = "mbpnix@pm.me";
+    userEmail = "mbprtpnix@gmail.com";
     userName = "mbpnix";
   };
 
