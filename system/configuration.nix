@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fstrim.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,6 +29,9 @@
 
   # Allow Unfree Packages.
   nixpkgs.config.allowUnfree = true;
+  
+  # Video Drivers.
+  services.xserver.videoDrivers = [ "intel" "ati" "amdgpu" ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -103,6 +107,38 @@
     enableSSHSupport = true;
   };
 
+  # Fonts.
+  fonts = {
+    enableFontDir = true;
+    enableGhostscriptFonts = true;
+    enableDefaultFonts = false;
+    fonts = with pkgs; [
+      fantasque-sans-mono
+      fira-code
+      fira-mono 
+      iosevka
+      powerline-fonts
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      # nerdfonts
+      (nerdfonts.override { fonts = [ "Iosevka" "FiraCode" "JetBrainsMono" ]; })
+    ];
+    fontconfig.defaultFonts = {
+      serif = [ "Noto Serif" "Noto Color Emoji" ];
+      sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
+      monospace = [ "Iosevka" "Noto Color Emoji" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
+
+  # Clear System.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
