@@ -109,7 +109,7 @@
 
   # Fonts.
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     enableDefaultFonts = false;
     fonts = with pkgs; [
