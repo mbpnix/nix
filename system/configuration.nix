@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./fstrim.nix
+      ./fonts.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -97,6 +98,8 @@
 
   # --- EXTRA --- #
 
+  environment.variables.EDITOR = "nvim";
+
   hardware.cpu.intel.updateMicrocode = true;
 
   networking.networkmanager.enable = true;
@@ -108,6 +111,15 @@
   services.xserver.exportConfiguration = true;
 
   programs.bash.enableCompletion = true;
+
+  nixpkgs.overlays = [
+    (self: super: {
+      neovim = super.neovim.override {
+        viAlias = true;
+        vimAlias = true;
+      };
+    })
+  ];
 
   # --- EXTRA --- #
 
@@ -158,4 +170,3 @@
   system.stateVersion = "21.05"; # Did you read the comment?
 
 }
-
