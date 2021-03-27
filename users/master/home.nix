@@ -67,5 +67,10 @@
     vimix-gtk-themes
     luna-icons
     zafiro-icons
+    brave
+    htop
+    pulseeffects-pw
+    tdesktop
+    discord
   ];
 }
