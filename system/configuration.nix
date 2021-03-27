@@ -75,18 +75,9 @@ in
     };
   };
 
-  # By Me.
-  
-  nix = {
-   package = pkgs.nixFlakes;
-   extraOptions = ''
-     experimental-features = nix-command flakes
-   '';
-  };
-  
+  # By Me.  
   services.xserver.displayManager.defaultSession = "xfce";
   
-
   # Configure keymap in X11
   services.xserver.layout = "gb";
   services.xserver.xkbOptions = "eurosign:e";
