@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+  stable = import (<stable>) { 
+    config.allowUnfree = true;
+  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -70,6 +76,14 @@
   };
 
   # By Me.
+  
+  nix = {
+   package = pkgs.nixFlakes;
+   extraOptions = ''
+     experimental-features = nix-command flakes
+   '';
+  };
+  
   services.xserver.displayManager.defaultSession = "xfce";
   
 

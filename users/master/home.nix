@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  stable = import (<stable>) { 
+    config.allowUnfree = true;
+  };
+in
+
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -64,13 +70,13 @@
     qrencode
     xclip
     youtube-dl
+    pulseeffects-legacy
     vimix-gtk-themes
     luna-icons
     zafiro-icons
     brave
     htop
-    pulseeffects-pw
     tdesktop
-    discord
+    stable.discord
   ];
 }
