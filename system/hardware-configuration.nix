@@ -14,24 +14,24 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1043c342-1055-49e8-9535-4ffa92812b18";
+    { device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
       options = [ "noatime" "nodiratime" "discard" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/9a4b9638-7f26-4604-88ec-13a879171e79";
+    { device = "/dev/disk/by-label/NIXHOME";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C60F-2F01";
+    { device = "/dev/disk/by-label/NIXEFI";
       fsType = "vfat";
       options = [ "noatime" "nodiratime" "discard" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1be57aff-c621-481b-9d83-be558aa3c42a"; }
+    [ { device = "/dev/disk/by-label/NIXSWAP"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
