@@ -57,11 +57,13 @@ in
   # User Packages.
   home.packages = with pkgs; [
     bc
+    emacs
     exa
     git
     git-crypt
     gnupg
     google-cloud-sdk
+    vlc
     mkpasswd
     nano
     neofetch
@@ -76,7 +78,11 @@ in
     zafiro-icons
     brave
     htop
-    tdesktop
     stable.discord
+    kotatogram-desktop
+    procs
+    tree
+    lsd
+    bat
   ];
 }

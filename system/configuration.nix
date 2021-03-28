@@ -44,6 +44,12 @@ in
   networking.interfaces.enp8s0.useDHCP = true;
   networking.interfaces.wlp9s0.useDHCP = true;
 
+  # Hosts.
+  networking.extraHosts =
+    ''
+      127.0.0.1 mbpnix.local.io
+    '';
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -77,6 +83,9 @@ in
 
   # By Me.  
   services.xserver.displayManager.defaultSession = "xfce";
+
+  # Docker.
+  virtualisation.docker.enable = true;
   
   # Configure keymap in X11
   services.xserver.layout = "gb";
@@ -97,7 +106,7 @@ in
     isNormalUser = true;
     description = "Master";
     initialPassword = "password";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -105,6 +114,7 @@ in
   environment.systemPackages = with pkgs; [
     wget vim git
     firefox
+    docker-compose
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
