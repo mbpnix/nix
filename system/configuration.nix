@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 let
@@ -28,13 +24,13 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
 
-  # NetworkManager
+  # NetworkManager.
   networking.networkmanager.enable = true;
 
-  # Intel Microcode
+  # Intel Microcode.
   hardware.cpu.intel.updateMicrocode = true;
 
-  # Allow Unfree
+  # Allow Unfree.
   nixpkgs.config.allowUnfree = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -73,7 +69,7 @@ in
       enable = true;
       extraConfig = let
         black = import (builtins.fetchTarball {
-          url = "https://github.com/mbpnix/nixos-black-theme/releases/download/v1.1.1/nixos-black-theme-1.1.1.tar.gz";
+          url = "https://github.com/mbpnix/nixos-black-theme/archive/refs/tags/v1.1.1.tar.gz";
           sha256 = "1l8kyr83q3lwpp6hpia49zj9cyjbkplrsk8qyxwkpi8491ay87v6";
         });
       in
@@ -81,13 +77,13 @@ in
     };
   };
 
-  # By Me.  
+  # Default Session.  
   services.xserver.displayManager.defaultSession = "xfce";
 
   # Docker.
   virtualisation.docker.enable = true;
   
-  # Configure keymap in X11
+  # Configure keymap in X11.
   services.xserver.layout = "gb";
   services.xserver.xkbOptions = "eurosign:e";
 
@@ -113,7 +109,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget vim git
-    firefox
+    brave
     docker-compose
   ];
 

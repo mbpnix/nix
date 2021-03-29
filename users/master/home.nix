@@ -72,7 +72,6 @@ in
     qrencode
     xclip
     youtube-dl
-    pulseeffects-legacy
     vimix-gtk-themes
     luna-icons
     zafiro-icons
