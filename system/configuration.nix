@@ -43,7 +43,7 @@ in
   # Hosts.
   networking.extraHosts =
     ''
-      127.0.0.1 mbpnix.local.io
+      127.0.0.1 mbpnix.local
     '';
 
   # Configure network proxy if necessary
